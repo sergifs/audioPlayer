@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Biblioteca>
+	<Canciones>
+		<Cancion>
+			<Nombre>This Is America</Nombre>
+			<Autor>Childish Gambino</Autor>
+			<Album>Guava Island</Album>
+			<Duracion>00:26</Duracion>
+			<RutaCancion>Childish Gambino - This Is America.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Starboy</Nombre>
+			<Autor>The Weeknd ft. Daft Punk</Autor>
+			<Album>Starboy</Album>
+			<Duracion>00:21</Duracion>
+			<RutaCancion>The Weeknd - Starboy ft. Daft Punk.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Rockstar</Nombre>
+			<Autor>Post Malone ft. 21 Savage</Autor>
+			<Album>Beerbongs & Bentleys</Album>
+			<Duracion>00:25</Duracion>
+			<RutaCancion>Post Malone - Rockstar ft. 21 Savage.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Stressed Out</Nombre>
+			<Autor>twenty one pilots</Autor>
+			<Album>Blurryface</Album>
+			<Duracion>00:24</Duracion>
+			<RutaCancion>twenty one pilots Stressed Out.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Titanium</Nombre>
+			<Autor>David Guetta ft. Sia</Autor>
+			<Album>Nothing but the Beat</Album>
+			<Duracion>00:19</Duracion>
+			<RutaCancion>David Guetta - Titanium ft. Sia.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>The Greatest</Nombre>
+			<Autor>Sia</Autor>
+			<Album>The Greatest</Album>
+			<Duracion>00:30</Duracion>
+			<RutaCancion>Sia - The Greatest.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Heart Shaped Box</Nombre>
+			<Autor>Neovaii</Autor>
+			<Album>Closure</Album>
+			<Duracion>00:22</Duracion>
+			<RutaCancion>Neovaii - Heart Shaped Box.mp3</RutaCancion>
+		</Cancion>
+		<Cancion>
+			<Nombre>Crossfire</Nombre>
+			<Autor>Stephen</Autor>
+			<Album>Sincerely</Album>
+			<Duracion>00:26</Duracion>
+			<RutaCancion>Stephen - Crossfire.mp3</RutaCancion>
+		</Cancion>
+	</Canciones>
+	<Playlists>
+		<Playlist>
+			<Nombre>Chill</Nombre>
+			<RutaJSON>chill</RutaJSON>
+		</Playlist>
+		<Playlist>
+			<Nombre>Happy</Nombre>
+			<RutaJSON>happy</RutaJSON>
+		</Playlist>
+		<Playlist>
+			<Nombre>Rap</Nombre>
+			<RutaJSON>rap</RutaJSON>
+		</Playlist>
+	</Playlists>
+</Biblioteca>
