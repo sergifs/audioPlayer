@@ -52,4 +52,15 @@ public class Playlist {
     public ArrayList<String> getRutaCanciones() {
         return rutaCanciones;
     }
+
+    @Override
+    public String toString() {
+        String listaCanciones = "";
+        listaCanciones = rutaCanciones.stream().map((rutaCancion) -> rutaCancion + "\n").reduce(listaCanciones, String::concat);
+        return "Nombre: " + nombre +
+               "\n Descripcion: " + descripcion +
+               "\n AlbumArt: " + albumArt +
+               "\n Ruta canciones: " + listaCanciones +
+               "\n ---------------------------------------------------";
+    }
 }

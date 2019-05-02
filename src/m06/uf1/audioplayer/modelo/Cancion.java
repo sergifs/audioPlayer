@@ -35,4 +35,14 @@ public class Cancion {
     public String getRutaCancion() {
         return rutaCancion;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre +
+               "\n Autor: " + autor +
+               "\n Album: " + album +
+               "\n Duracion: " + duracion +
+               "\n Ruta: " + rutaCancion +
+               "\n ---------------------------------------------------";
+    }
 }
