@@ -4,45 +4,37 @@ import m06.uf1.audioplayer.vista.Vista;
 import m06.uf1.audioplayer.modelo.Audio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 public class Controlador implements ActionListener {
 
-    private Vista vista;
     private Audio audio;
 
     public Controlador() throws BasicPlayerException {
-        vista = new Vista();
+        Vista vista = new Vista(this);
         audio = Audio.GetPlayer();
-        audio.open(new File("audios/acdc - hells bells.mp3"));
-        afegirListenerBotons();
-    }
-
-    public void afegirListenerBotons() {
-        vista.getPlay().addActionListener(this);
-        vista.getStop().addActionListener(this);
-        vista.getPausa().addActionListener(this);
-        vista.getContinuar().addActionListener(this);
+        audio.openSong(ReproductorAudio.buscarCancion(0));
     }
 
     //Dotem de funcionalitat als botons
     @Override
     public void actionPerformed(ActionEvent esdeveniment) {
         //Declarem el gestor d'esdeveniments
-        Object gestorEsdeveniments = esdeveniment.getSource();
+        String action = esdeveniment.getActionCommand();
+
         try {
-            if (gestorEsdeveniments.equals(vista.getPlay())) { //Si hem pitjat el boto play
-                audio.play(); //reproduim l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getStop())) {
-                //Si hem pitjat el boto stop
-                audio.stop(); //parem la reproducció de l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getPausa())) {
-                //Si hem pitjat el boto stop
-                audio.pause(); //pausem la reproducció de l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
-                //Si hem pitjat el boto stop
-                audio.resume(); //continuem la reproducció de l'àudio
+            switch (action) {
+                case "play":
+                    audio.play();
+                    break;
+                case "stop":
+                    audio.stop();
+                    break;
+                case "pausa":
+                    audio.pause();
+                case "continuar":
+                    audio.resume();
+                    break;
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();
