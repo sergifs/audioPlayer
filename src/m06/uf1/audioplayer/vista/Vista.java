@@ -10,10 +10,7 @@ public class Vista {
     private JFrame finestra;
     private JPanel panell;
 
-    private JButton play;
-    private JButton stop;
-    private JButton pausa;
-    private JButton continuar;
+    private JButton play, stop, pausa, continuar, anterior, siguiente;
 
     public Vista() {
         finestra = new JFrame("Reproductor Àudio");
@@ -26,12 +23,17 @@ public class Vista {
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
-        continuar = new JButton("Continue");     
+        continuar = new JButton("Continue"); 
+        anterior = new JButton("Anterior");
+        siguiente = new JButton("Siguiente");
+        panell.add(anterior);
         panell.add(play);
         panell.add(pausa);
         panell.add(continuar);
         panell.add(stop);
+        panell.add(siguiente);
         finestra.add(panell);
+        finestra.pack();
         finestra.setVisible(true);
     }
 

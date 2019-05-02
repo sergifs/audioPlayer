@@ -6,16 +6,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
+import m06.uf1.audioplayer.modelo.ListaBibliotecaDOM;
 
 public class Controlador implements ActionListener {
 
     private Vista vista;
     private Audio audio;
+    private ListaBibliotecaDOM biblioteca;
 
-    public Controlador() throws BasicPlayerException {
+    public Controlador(ListaBibliotecaDOM biblioteca) throws BasicPlayerException {
         vista = new Vista();
+        this.biblioteca = biblioteca;
         audio = Audio.GetPlayer();
-        audio.open(new File("audios/acdc - hells bells.mp3"));
+        audio.openSong(biblioteca.buscarCancion(0));
         afegirListenerBotons();
     }
 

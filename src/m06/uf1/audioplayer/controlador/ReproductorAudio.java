@@ -24,18 +24,19 @@ public class ReproductorAudio {
     public static void main(String[] args) throws FileNotFoundException {
         try {
             biblioteca = new ListaBibliotecaDOM(nombreArchivo);
+            java.awt.EventQueue.invokeLater(() ->{
+            try {
+                Controlador controlador = new Controlador(biblioteca);
+            } catch (BasicPlayerException ex) {
+                Logger.getLogger(ReproductorAudio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         } catch (IOException ex) {
             System.out.println("Error d'entrada/sortida");
         } catch (ParserConfigurationException ex) {
             System.out.println("Error processant arxiu " + nombreArchivo);
         }
-        java.awt.EventQueue.invokeLater(() ->{
-            try {
-                Controlador controlador = new Controlador();
-            } catch (BasicPlayerException ex) {
-                Logger.getLogger(ReproductorAudio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        
     }
 
 }
