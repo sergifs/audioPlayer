@@ -9,12 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
-import java.util.Map.Entry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import m06.uf1.audioplayer.modelo.Cancion;
-import m06.uf1.audioplayer.modelo.Playlist;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -27,26 +24,20 @@ import org.xml.sax.SAXException;
  */
 public class ListaBibliotecaDOM {
     
-    private Map<Integer, Cancion> canciones;
-    private Map<Integer, Playlist> playlists;
-    private String archivoCanciones;
+    
+    private Map<Integer, Playlist> playlists = new HashMap();;
 
-    public ListaBibliotecaDOM(String nombreArchivo) throws IOException, ParserConfigurationException {
-        canciones = new HashMap();
-        playlists = new HashMap();
-        this.archivoCanciones = nombreArchivo;
-        cargarBiblioteca();
-    }
-
-    public void cargarBiblioteca() throws FileNotFoundException, IOException, ParserConfigurationException {
+    public static Map<Integer, Cancion> cargarCanciones(String nombreArchivo) throws FileNotFoundException, IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document document;
         DocumentBuilder builder = factory.newDocumentBuilder();
-
+        
+        Map<Integer, Cancion> canciones = new HashMap();
+        
         try {
 
-            document = builder.parse(new File(archivoCanciones));
+            document = builder.parse(new File(nombreArchivo));
             NodeList listaCanciones = document.getElementsByTagName("cancion");
             System.out.println("Numero de canciones en la biblioteca: " + listaCanciones.getLength());
             for (int i = 0; i < listaCanciones.getLength(); i++) {
@@ -71,8 +62,23 @@ public class ListaBibliotecaDOM {
                 }
             }
             
-            System.out.println();
-            
+        } catch (SAXException ex) {
+            ex.printStackTrace();
+        }
+        return canciones;
+    }
+    
+    public static Map<Integer, Playlist> cargarPlaylists(String nombreArchivo) throws FileNotFoundException, IOException, ParserConfigurationException {
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        Document document;
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        Map<Integer, Playlist> playlists = new HashMap();
+        
+        try {
+
+            document = builder.parse(new File(nombreArchivo));
             NodeList listaPlaylists = document.getElementsByTagName("playlist");
             System.out.println("Numero de playlists en la biblioteca: " + listaPlaylists.getLength());
             for (int i = 0; i < listaPlaylists.getLength(); i++) {
@@ -94,21 +100,6 @@ public class ListaBibliotecaDOM {
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
-    }
-
-    public int numeroCanciones() {
-        return canciones.size();
-    }
-
-    public Cancion buscarCancion(int id) {
-        return canciones.get(id);
-    }
-
-    public String listarCanciones() {
-        String retorn = "LISTA DE CANCIONES: \nHay un total de " + canciones.size() + " canciones.\n";
-        for (Entry<Integer, Cancion> cancion: canciones.entrySet()){
-            retorn += cancion.toString() + "\n";
-        }
-        return retorn;
+        return playlists;
     }
 }
