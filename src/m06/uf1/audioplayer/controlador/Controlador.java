@@ -12,9 +12,10 @@ public class Controlador implements ActionListener {
     private Vista vista;
     private Audio audio;
 
-    public Controlador() {
+    public Controlador() throws BasicPlayerException {
         vista = new Vista();
-        audio = new Audio("audios/acdc - hells bells.mp3");
+        audio = Audio.GetPlayer();
+        audio.open(new File("audios/acdc - hells bells.mp3"));
         afegirListenerBotons();
     }
 
@@ -32,16 +33,16 @@ public class Controlador implements ActionListener {
         Object gestorEsdeveniments = esdeveniment.getSource();
         try {
             if (gestorEsdeveniments.equals(vista.getPlay())) { //Si hem pitjat el boto play
-                audio.getPlayer().play(); //reproduim l'àudio
+                audio.play(); //reproduim l'àudio
             } else if (gestorEsdeveniments.equals(vista.getStop())) {
                 //Si hem pitjat el boto stop
-                audio.getPlayer().stop(); //parem la reproducció de l'àudio
+                audio.stop(); //parem la reproducció de l'àudio
             } else if (gestorEsdeveniments.equals(vista.getPausa())) {
                 //Si hem pitjat el boto stop
-                audio.getPlayer().pause(); //pausem la reproducció de l'àudio
+                audio.pause(); //pausem la reproducció de l'àudio
             } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
                 //Si hem pitjat el boto stop
-                audio.getPlayer().resume(); //continuem la reproducció de l'àudio
+                audio.resume(); //continuem la reproducció de l'àudio
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();

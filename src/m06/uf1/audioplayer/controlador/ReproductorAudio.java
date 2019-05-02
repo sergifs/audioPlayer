@@ -10,11 +10,18 @@ package m06.uf1.audioplayer.controlador;
  * @author Juan
  */
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 public class ReproductorAudio {
     public static void main(String[] args) throws FileNotFoundException {
         java.awt.EventQueue.invokeLater(() ->{
-            Controlador controlador = new Controlador();
+            try {
+                Controlador controlador = new Controlador();
+            } catch (BasicPlayerException ex) {
+                Logger.getLogger(ReproductorAudio.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 }
