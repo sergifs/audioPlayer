@@ -56,6 +56,14 @@ public class ReproductorAudio {
     public static Cancion buscarCancion(int id) {
         return canciones.get(id);
     }
+    
+    public static Map<Integer, Cancion> getCanciones() {
+        return canciones;
+    }
+    
+    public static Map<Integer, Playlist> getPlaylists() {
+        return playlists;
+    }
 
     public static String listarCanciones() {
         String retorn = "LISTA DE CANCIONES: \nHay un total de " + canciones.size() + " canciones.\n";
