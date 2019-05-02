@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Biblioteca>
-	<Canciones>
-		<Cancion>
-			<Nombre>This Is America</Nombre>
-			<Autor>Childish Gambino</Autor>
-			<Album>Guava Island</Album>
-			<Duracion>00:26</Duracion>
-			<RutaCancion>Childish Gambino - This Is America.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Starboy</Nombre>
-			<Autor>The Weeknd ft. Daft Punk</Autor>
-			<Album>Starboy</Album>
-			<Duracion>00:21</Duracion>
-			<RutaCancion>The Weeknd - Starboy ft. Daft Punk.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Rockstar</Nombre>
-			<Autor>Post Malone ft. 21 Savage</Autor>
-			<Album>Beerbongs & Bentleys</Album>
-			<Duracion>00:25</Duracion>
-			<RutaCancion>Post Malone - Rockstar ft. 21 Savage.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Stressed Out</Nombre>
-			<Autor>twenty one pilots</Autor>
-			<Album>Blurryface</Album>
-			<Duracion>00:24</Duracion>
-			<RutaCancion>twenty one pilots Stressed Out.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Titanium</Nombre>
-			<Autor>David Guetta ft. Sia</Autor>
-			<Album>Nothing but the Beat</Album>
-			<Duracion>00:19</Duracion>
-			<RutaCancion>David Guetta - Titanium ft. Sia.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>The Greatest</Nombre>
-			<Autor>Sia</Autor>
-			<Album>The Greatest</Album>
-			<Duracion>00:30</Duracion>
-			<RutaCancion>Sia - The Greatest.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Heart Shaped Box</Nombre>
-			<Autor>Neovaii</Autor>
-			<Album>Closure</Album>
-			<Duracion>00:22</Duracion>
-			<RutaCancion>Neovaii - Heart Shaped Box.mp3</RutaCancion>
-		</Cancion>
-		<Cancion>
-			<Nombre>Crossfire</Nombre>
-			<Autor>Stephen</Autor>
-			<Album>Sincerely</Album>
-			<Duracion>00:26</Duracion>
-			<RutaCancion>Stephen - Crossfire.mp3</RutaCancion>
-		</Cancion>
-	</Canciones>
-	<Playlists>
-		<Playlist>
-			<Nombre>Chill</Nombre>
-			<RutaJSON>chill</RutaJSON>
-		</Playlist>
-		<Playlist>
-			<Nombre>Happy</Nombre>
-			<RutaJSON>happy</RutaJSON>
-		</Playlist>
-		<Playlist>
-			<Nombre>Rap</Nombre>
-			<RutaJSON>rap</RutaJSON>
-		</Playlist>
-	</Playlists>
-</Biblioteca>
+<biblioteca>
+	<canciones>
+		<cancion id="0">
+			<nombre>This Is America</nombre>
+			<autor>Childish Gambino</autor>
+			<album>Guava Island</album>
+			<duracion>00:26</duracion>
+			<rutaCancion>Childish Gambino - This Is America.mp3</rutaCancion>
+		</cancion>
+		<cancion id="1">
+			<nombre>Starboy</nombre>
+			<autor>The Weeknd ft. Daft Punk</autor>
+			<album>Starboy</album>
+			<duracion>00:21</duracion>
+			<rutaCancion>The Weeknd - Starboy ft. Daft Punk.mp3</rutaCancion>
+		</cancion>
+		<cancion id="2">
+			<nombre>Rockstar</nombre>
+			<autor>Post Malone ft. 21 Savage</autor>
+			<album>Beerbongs &amp; Bentleys</album>
+			<duracion>00:25</duracion>
+			<rutaCancion>Post Malone - Rockstar ft. 21 Savage.mp3</rutaCancion>
+		</cancion>
+		<cancion id="3">
+			<nombre>Stressed Out</nombre>
+			<autor>twenty one pilots</autor>
+			<album>Blurryface</album>
+			<duracion>00:24</duracion>
+			<rutaCancion>twenty one pilots Stressed Out.mp3</rutaCancion>
+		</cancion>
+		<cancion id="4">
+			<nombre>Titanium</nombre>
+			<autor>David Guetta ft. Sia</autor>
+			<album>Nothing but the Beat</album>
+			<duracion>00:19</duracion>
+			<rutaCancion>David Guetta - Titanium ft. Sia.mp3</rutaCancion>
+		</cancion>
+		<cancion id="5">
+			<nombre>The Greatest</nombre>
+			<autor>Sia</autor>
+			<album>The Greatest</album>
+			<duracion>00:30</duracion>
+			<rutaCancion>Sia - The Greatest.mp3</rutaCancion>
+		</cancion>
+		<cancion id="6">
+			<nombre>Heart Shaped Box</nombre>
+			<autor>Neovaii</autor>
+			<album>Closure</album>
+			<duracion>00:22</duracion>
+			<rutaCancion>Neovaii - Heart Shaped Box.mp3</rutaCancion>
+		</cancion>
+		<cancion id="7">
+			<nombre>Crossfire</nombre>
+			<autor>Stephen</autor>
+			<album>Sincerely</album>
+			<duracion>00:26</duracion>
+			<rutaCancion>Stephen - Crossfire.mp3</rutaCancion>
+		</cancion>
+	</canciones>
+	<playlists>
+		<playlist id="0">
+			<nombre>Chill</nombre>
+			<rutaJSON>chill</rutaJSON>
+		</playlist>
+		<playlist id="1">
+			<nombre>Happy</nombre>
+			<rutaJSON>happy</rutaJSON>
+		</playlist>
+		<playlist id="2">
+			<nombre>Rap</nombre>
+			<rutaJSON>rap</rutaJSON>
+		</playlist>
+	</playlists>
+</biblioteca>
