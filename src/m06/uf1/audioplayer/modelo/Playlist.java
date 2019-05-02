@@ -1,6 +1,14 @@
 package m06.uf1.audioplayer.modelo;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -62,5 +70,20 @@ public class Playlist {
                "\n AlbumArt: " + albumArt +
                "\n Ruta canciones: " + listaCanciones +
                "\n ---------------------------------------------------";
+    }
+    
+    public void leerJSON(){
+        
+        JSONParser parser = new JSONParser();
+
+            try {
+                JSONObject playList = (JSONObject)parser.parse(new FileReader("playList.json"));
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+            } catch (IOException ex) {
+                Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 }
