@@ -39,8 +39,12 @@ public class Vista {
         panell.add(siguiente);
         
         JPanel panel2 = new JPanel();
+        
         JComboBox<Cancion> comboBox = new JComboBox();
         
+        panel2.add(comboBox);
+        
+        finestra.add(panel2);
         finestra.add(panell);
         
         //add listener

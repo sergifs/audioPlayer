@@ -32,6 +32,7 @@ public class Controlador implements ActionListener {
                     break;
                 case "pausa":
                     audio.pause();
+                    break;
                 case "continuar":
                     audio.resume();
                     break;
