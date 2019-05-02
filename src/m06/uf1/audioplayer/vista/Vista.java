@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer;
+package m06.uf1.audioplayer.vista;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -16,7 +16,6 @@ public class Vista {
     private JButton continuar;
 
     public Vista() {
-
         finestra = new JFrame("Reproductor Àudio");
         finestra.setSize(400, 50);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

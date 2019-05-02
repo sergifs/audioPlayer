@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer;
+package m06.uf1.audioplayer.modelo;
 
 import java.io.File;
 import javazoom.jlgui.basicplayer.BasicPlayer;

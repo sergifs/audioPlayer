@@ -1,5 +1,7 @@
-package m06.uf1.audioplayer;
+package m06.uf1.audioplayer.controlador;
 
+import m06.uf1.audioplayer.vista.Vista;
+import m06.uf1.audioplayer.modelo.Audio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,6 +26,7 @@ public class Controlador implements ActionListener {
     }
 
     //Dotem de funcionalitat als botons
+    @Override
     public void actionPerformed(ActionEvent esdeveniment) {
         //Declarem el gestor d'esdeveniments
         Object gestorEsdeveniments = esdeveniment.getSource();
