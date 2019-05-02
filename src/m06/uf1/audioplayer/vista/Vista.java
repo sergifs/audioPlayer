@@ -2,8 +2,11 @@ package m06.uf1.audioplayer.vista;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import m06.uf1.audioplayer.controlador.Controlador;
+import m06.uf1.audioplayer.modelo.Cancion;
 
 public class Vista {
 
@@ -12,27 +15,47 @@ public class Vista {
 
     private JButton play, stop, pausa, continuar, anterior, siguiente;
 
-    public Vista() {
+    public Vista(Controlador controller) {
         finestra = new JFrame("Reproductor Àudio");
         finestra.setSize(400, 50);
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         finestra.setResizable(false);
         finestra.setLocationRelativeTo(null);
         panell = new JPanel();
-        panell.setLayout(new GridLayout(1, 5));
+        panell.setLayout(new GridLayout(1, 0));
+        
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
         continuar = new JButton("Continue"); 
         anterior = new JButton("Anterior");
         siguiente = new JButton("Siguiente");
+        
         panell.add(anterior);
         panell.add(play);
         panell.add(pausa);
         panell.add(continuar);
         panell.add(stop);
         panell.add(siguiente);
+        
+        JPanel panel2 = new JPanel();
+        JComboBox<Cancion> comboBox = new JComboBox();
+        
         finestra.add(panell);
+        
+        //add listener
+        pausa.addActionListener(controller);
+        pausa.setActionCommand("pausa");
+        
+        play.addActionListener(controller);
+        play.setActionCommand("play");
+        
+        stop.addActionListener(controller);
+        stop.setActionCommand("stop");
+        
+        continuar.addActionListener(controller);
+        continuar.setActionCommand("continuar");
+        
         finestra.pack();
         finestra.setVisible(true);
     }

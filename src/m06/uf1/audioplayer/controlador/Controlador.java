@@ -15,37 +15,31 @@ public class Controlador implements ActionListener {
     private ListaBibliotecaDOM biblioteca;
 
     public Controlador(ListaBibliotecaDOM biblioteca) throws BasicPlayerException {
-        vista = new Vista();
         this.biblioteca = biblioteca;
         audio = Audio.GetPlayer();
         audio.openSong(biblioteca.buscarCancion(0));
-        afegirListenerBotons();
-    }
-
-    public void afegirListenerBotons() {
-        vista.getPlay().addActionListener(this);
-        vista.getStop().addActionListener(this);
-        vista.getPausa().addActionListener(this);
-        vista.getContinuar().addActionListener(this);
+        vista = new Vista(this);
     }
 
     //Dotem de funcionalitat als botons
     @Override
     public void actionPerformed(ActionEvent esdeveniment) {
         //Declarem el gestor d'esdeveniments
-        Object gestorEsdeveniments = esdeveniment.getSource();
+        String action = esdeveniment.getActionCommand();
+
         try {
-            if (gestorEsdeveniments.equals(vista.getPlay())) { //Si hem pitjat el boto play
-                audio.play(); //reproduim l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getStop())) {
-                //Si hem pitjat el boto stop
-                audio.stop(); //parem la reproducció de l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getPausa())) {
-                //Si hem pitjat el boto stop
-                audio.pause(); //pausem la reproducció de l'àudio
-            } else if (gestorEsdeveniments.equals(vista.getContinuar())) {
-                //Si hem pitjat el boto stop
-                audio.resume(); //continuem la reproducció de l'àudio
+            switch (action) {
+                case "play":
+                    audio.play();
+                    break;
+                case "stop":
+                    audio.stop();
+                    break;
+                case "pausa":
+                    audio.pause();
+                case "continuar":
+                    audio.resume();
+                    break;
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();
