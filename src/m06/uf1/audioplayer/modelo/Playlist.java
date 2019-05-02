@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -77,7 +78,11 @@ public class Playlist {
         JSONParser parser = new JSONParser();
 
             try {
-                JSONObject playList = (JSONObject)parser.parse(new FileReader("playList.json"));
+                JSONObject playList = (JSONObject)parser.parse(new FileReader("lib/playList.json"));
+                JSONArray urlList = (JSONArray)playList.get("playLists");
+                for(Object l: urlList){
+                    System.out.println(l);
+                }
             } catch (FileNotFoundException e){
                 e.printStackTrace();
             } catch (IOException ex) {

@@ -15,6 +15,7 @@ import m06.uf1.audioplayer.modelo.ListaBibliotecaDOM;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
+import m06.uf1.audioplayer.modelo.Playlist;
 
 public class ReproductorAudio {
 
@@ -22,6 +23,10 @@ public class ReproductorAudio {
     private static ListaBibliotecaDOM biblioteca;
 
     public static void main(String[] args) throws FileNotFoundException {
+        
+        Playlist playList = new Playlist("hola","buenas"); //Prueba playList
+        playList.leerJSON(); //Prubs playList
+        
         try {
             biblioteca = new ListaBibliotecaDOM(nombreArchivo);
         } catch (IOException ex) {
