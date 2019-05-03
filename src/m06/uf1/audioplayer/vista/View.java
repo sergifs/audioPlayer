@@ -29,6 +29,7 @@ public class View extends javax.swing.JFrame {
     public View(Controlador control) {
         initComponents();
         personalizarTodo(control);
+        control.SetSlider(jSlider1);
     }
 
     /**
