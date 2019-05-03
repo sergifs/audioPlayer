@@ -56,6 +56,13 @@
 			<duracion>00:26</duracion>
 			<rutaCancion>audios\Stephen - Crossfire.mp3</rutaCancion>
 		</cancion>
+		<cancion id="8">
+			<nombre>Hells bells</nombre>
+			<autor>AC/DC</autor>
+			<album>Back in Black</album>
+			<duracion>00:15</duracion>
+			<rutaCancion>audios\acdc - hells bells.mp3</rutaCancion>
+		</cancion>
 	</canciones>
 	<playlists>
 		<playlist id="0">
