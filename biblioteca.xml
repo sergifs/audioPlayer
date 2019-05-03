@@ -67,15 +67,15 @@
 	<playlists>
 		<playlist id="0">
 			<nombre>Chill</nombre>
-			<rutaJSON>chill</rutaJSON>
+			<rutaJSON>chill.json</rutaJSON>
 		</playlist>
 		<playlist id="1">
 			<nombre>Happy</nombre>
-			<rutaJSON>happy</rutaJSON>
+			<rutaJSON>happy.json</rutaJSON>
 		</playlist>
 		<playlist id="2">
 			<nombre>Rap</nombre>
-			<rutaJSON>rap</rutaJSON>
+			<rutaJSON>rap.json</rutaJSON>
 		</playlist>
 	</playlists>
 </biblioteca>

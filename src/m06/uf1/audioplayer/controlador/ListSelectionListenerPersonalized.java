@@ -19,18 +19,19 @@ import m06.uf1.audioplayer.vista.View;
  *
  * @author Antonio
  */
-public class ListSelectionListenerPersonalized implements ListSelectionListener{
+public class ListSelectionListenerPersonalized implements ListSelectionListener {
 
     private TableModelPersonalized tm;
 
     public ListSelectionListenerPersonalized(TableModelPersonalized tm) {
         this.tm = tm;
     }
-    
+
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-        JTable table = (JTable) lse.getSource();
-            if(!lse.getValueIsAdjusting()){
+        if (lse.getSource() instanceof JTable) {
+            JTable table = (JTable) lse.getSource();
+            if (!lse.getValueIsAdjusting()) {
                 Audio.GetPlayer().openSong(tm.getCancion(table.getSelectedRow()));
                 try {
                     Audio.GetPlayer().play();
@@ -38,6 +39,7 @@ public class ListSelectionListenerPersonalized implements ListSelectionListener{
                     Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
     }
-    
+
 }

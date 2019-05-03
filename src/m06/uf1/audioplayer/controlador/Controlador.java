@@ -1,6 +1,5 @@
 package m06.uf1.audioplayer.controlador;
 
-import m06.uf1.audioplayer.vista.Vista;
 import m06.uf1.audioplayer.modelo.Audio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,7 +95,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void progress(int i, long l, byte[] bytes, Map map) {
         //System.out.println(l/1000000f);
         //System.out.println(map.entrySet());
-        slider.setValue((int) ((Long)map.get("mp3.frame")/10));
+        slider.setValue((int) ((Long) map.get("mp3.frame") / 10));
     }
 
     @Override

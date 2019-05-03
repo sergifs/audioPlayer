@@ -7,26 +7,26 @@ import javazoom.jlgui.basicplayer.BasicPlayer;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 // http://www.javazoom.net/jlgui/api.html
-public class Audio extends BasicPlayer{
+public class Audio extends BasicPlayer {
 
-    public static Audio GetPlayer(){
-        if(player == null){
-            synchronized(Audio.class){
-                if(player == null){
+    public static Audio GetPlayer() {
+        if (player == null) {
+            synchronized (Audio.class) {
+                if (player == null) {
                     player = new Audio();
                 }
             }
         }
         return player;
     }
-    
+
     private static Audio player;
-    
-    private Audio(){
+
+    private Audio() {
         super();
     }
-    
-    public boolean openSong(Cancion c){
+
+    public boolean openSong(Cancion c) {
         boolean resultado = false;
         try {
             open(new File(c.getRutaCancion()));
