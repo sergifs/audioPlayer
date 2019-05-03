@@ -108,21 +108,34 @@ public class Playlist {
     
     public void crearJSON(){
         
-        JSONObject playList = new JSONObject();
-        playList.put("id",1);
-        playList.put("nombre" , "Rap Play List");
-        playList.put("descripcion" , "Play List de rap");
-        playList.put("rutaImagen" , "rutaiImagen");
-        JSONArray rutaArchivos = new JSONArray();
-        rutaArchivos.add("audios/Post Malone - Rockstar ft. 21 Savage.mp3");
-        rutaArchivos.add("audios/Childish Gambino - This Is America.mp3");
-        rutaArchivos.add("audios/twenty one pilots Stressed Out.mp3");
-        playList.put("rutasArchivos", rutaArchivos);
+        JSONObject playList_01 = new JSONObject();
+        playList_01.put("nombre" , "Rap Play List");
+        playList_01.put("descripcion" , "Play List de rap");
+        playList_01.put("rutaImagen" , "rutaiImagen");
+        JSONArray rutaArchivos_01 = new JSONArray();
+        rutaArchivos_01.add("audios/Post Malone - Rockstar ft. 21 Savage.mp3");
+        rutaArchivos_01.add("audios/Childish Gambino - This Is America.mp3");
+        rutaArchivos_01.add("audios/twenty one pilots Stressed Out.mp3");
+        playList_01.put("rutasArchivos", rutaArchivos_01);
+        
+        JSONObject playList_02 = new JSONObject();
+        playList_01.put("nombre" , "Rap Play List");
+        playList_01.put("descripcion" , "Play List de rap");
+        playList_01.put("rutaImagen" , "rutaiImagen");
+        JSONArray rutaArchivos_02 = new JSONArray();
+        rutaArchivos_02.add("audios/Post Malone - Rockstar ft. 21 Savage.mp3");
+        rutaArchivos_02.add("audios/Childish Gambino - This Is America.mp3");
+        rutaArchivos_02.add("audios/twenty one pilots Stressed Out.mp3");
+        playList_01.put("rutasArchivos", rutaArchivos_02);
   
         try {
-            FileWriter fichero = new FileWriter("playList.json");
-            fichero.write(playList.toString());
-            fichero.close();
+            FileWriter fichero_01 = new FileWriter("playList_01.json");
+            fichero_01.write(playList_01.toString());
+            fichero_01.close();
+            
+            FileWriter fichero_02 = new FileWriter("playList_02.json");
+            fichero_02.write(playList_02.toString());
+            fichero_02.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
