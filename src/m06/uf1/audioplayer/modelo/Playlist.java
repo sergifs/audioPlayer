@@ -109,15 +109,16 @@ public class Playlist {
     public void crearJSON(){
         
         JSONObject playList = new JSONObject();
-        playList.put("nombre" , "playList_1");
-        playList.put("descripcion" , "descripcion playList_1");
+        playList.put("id",1);
+        playList.put("nombre" , "Rap Play List");
+        playList.put("descripcion" , "Play List de rap");
         playList.put("rutaImagen" , "rutaiImagen");
         JSONArray rutaArchivos = new JSONArray();
-        rutaArchivos.add("rutaArchivo1");
-        rutaArchivos.add("rutaArchivo2");
-        rutaArchivos.add("rutaArchivo3");
+        rutaArchivos.add("audios/Post Malone - Rockstar ft. 21 Savage.mp3");
+        rutaArchivos.add("audios/Childish Gambino - This Is America.mp3");
+        rutaArchivos.add("audios/twenty one pilots Stressed Out.mp3");
         playList.put("rutasArchivos", rutaArchivos);
-        
+  
         try {
             FileWriter fichero = new FileWriter("playList.json");
             fichero.write(playList.toString());
