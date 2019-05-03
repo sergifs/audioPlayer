@@ -202,10 +202,13 @@ public class View extends javax.swing.JFrame {
         jButton2.addActionListener(control);
         jButton3.addActionListener(control);
         jButton4.addActionListener(control);
-        
     }
     
-    public void setPlaylistArt(String rutaPlaylistArt) throws MalformedURLException {
-        playlist_art.setIcon(new ImageIcon((new File(rutaPlaylistArt)).toURI().toURL()));
+    public void setPlaylistArt(String rutaPlaylistArt) {
+        try {
+            playlist_art.setIcon(new ImageIcon((new File(rutaPlaylistArt)).toURI().toURL()));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
