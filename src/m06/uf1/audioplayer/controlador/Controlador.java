@@ -8,20 +8,26 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Map;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JSlider;
+import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.TableModel;
 import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import javazoom.jlgui.basicplayer.BasicPlayerListener;
+import m06.uf1.audioplayer.modelo.Playlist;
+import m06.uf1.audioplayer.modelo.TableModelPersonalized;
 import m06.uf1.audioplayer.vista.View;
 
 public class Controlador implements ActionListener, ItemListener, BasicPlayerListener, ChangeListener {
 
     private Audio audio;
     private JSlider slider;
-
+    private JTable table;
+    
     public Controlador() throws BasicPlayerException {
         View v = new View(this);
         v.setVisible(true);
@@ -61,11 +67,21 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void SetSlider(JSlider slider) {
         this.slider = slider;
     }
-
+    public void SetTable(JTable table){
+        this.table = table;
+    }
+    
     //ItemListener
     @Override
     public void itemStateChanged(ItemEvent ie) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JComboBox comboBox = (JComboBox) ie.getSource();
+        int i = comboBox.getSelectedIndex()-1;
+        Playlist p = null;
+        if(i > -1){
+            p = ReproductorAudio.getPlaylists().get(i);
+        }
+        table.setModel(new TableModelPersonalized(p, View.NombreColumnas));
+        
     }
 
     //BasicPlayerListener

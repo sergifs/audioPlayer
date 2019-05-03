@@ -5,17 +5,25 @@
  */
 package m06.uf1.audioplayer.vista;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableCellRenderer;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.audioplayer.controlador.Controlador;
+import m06.uf1.audioplayer.controlador.ListSelectionListenerPersonalized;
 import m06.uf1.audioplayer.controlador.ReproductorAudio;
 import m06.uf1.audioplayer.modelo.Audio;
-import m06.uf1.audioplayer.modelo.TableModel;
+import m06.uf1.audioplayer.modelo.Cancion;
+import m06.uf1.audioplayer.modelo.Playlist;
+import m06.uf1.audioplayer.modelo.TableCellRendererPersonalized;
+import m06.uf1.audioplayer.modelo.TableModelPersonalized;
 
 /**
  *
@@ -29,7 +37,6 @@ public class View extends javax.swing.JFrame {
     public View(Controlador control) {
         initComponents();
         personalizarTodo(control);
-        control.SetSlider(jSlider1);
     }
 
     /**
@@ -168,24 +175,35 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     
+    public static final String[] NombreColumnas = new String[]{"Nombre", "Autor", "Album", "Duración"};
+    
     private void personalizarTodo(Controlador control){
-        TableModel tm = new TableModel(new String[]{"Nombre", "Autor", "Album", "Duración"});
+        control.SetSlider(jSlider1);
+        control.SetTable(jTable1);
+        
+        TableModelPersonalized tm = new TableModelPersonalized(null, NombreColumnas);
         jTable1.setModel(tm);
-        jTable1.getSelectionModel().addListSelectionListener((lse) -> {
-            if(!lse.getValueIsAdjusting()){
-                Audio.GetPlayer().openSong(ReproductorAudio.buscarCancion(jTable1.getSelectedRow()));
-                try {
-                    Audio.GetPlayer().play();
-                } catch (BasicPlayerException ex) {
-                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+        jTable1.changeSelection(0, 0, false, false);
+        jTable1.setDefaultRenderer(Object.class, new TableCellRendererPersonalized());
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListenerPersonalized(tm));
         
         jButton1.addActionListener(control);
         jButton2.addActionListener(control);
         jButton3.addActionListener(control);
         jButton4.addActionListener(control);
         
+        
+        jComboBox1.removeAllItems();
+        jComboBox1.addItem("Ninguna");
+        for(Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()){
+            jComboBox1.addItem(((Playlist)entry.getValue()).getNombre());
+        }
+        
+        jComboBox1.addItemListener(control);
+        
+    }
+    
+    public void setNewModel(Playlist ply){
+        jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
     }
 }
