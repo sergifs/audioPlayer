@@ -187,6 +187,7 @@ public class View extends javax.swing.JFrame {
     private void personalizarTodo(Controlador control){
         control.SetSlider(jSlider1);
         control.SetTable(jTable1);
+        control.SetPlaylistArt(playlist_art);
         
         TableModelPersonalized tm = new TableModelPersonalized(null, NombreColumnas);
         jTable1.setModel(tm);
@@ -212,13 +213,5 @@ public class View extends javax.swing.JFrame {
     
     public void setNewModel(Playlist ply){
         jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
-    }
-    
-    public void setPlaylistArt(String rutaPlaylistArt) {
-        try {
-            playlist_art.setIcon(new ImageIcon((new File(rutaPlaylistArt)).toURI().toURL()));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

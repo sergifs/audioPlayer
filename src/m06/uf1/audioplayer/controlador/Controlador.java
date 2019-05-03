@@ -5,14 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.table.TableModel;
 import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
@@ -26,6 +31,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     private Audio audio;
     private JSlider slider;
     private JTable table;
+    private JLabel playlist_art;
     
     public Controlador() throws BasicPlayerException {
         View v = new View(this);
@@ -66,8 +72,13 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void SetSlider(JSlider slider) {
         this.slider = slider;
     }
+    
     public void SetTable(JTable table){
         this.table = table;
+    }
+    
+    public void SetPlaylistArt(JLabel playlist_art){
+        this.playlist_art = playlist_art;
     }
     
     //ItemListener
@@ -80,6 +91,11 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
             p = ReproductorAudio.getPlaylists().get(i);
         }
         table.setModel(new TableModelPersonalized(p, View.NombreColumnas));
+        try {
+            playlist_art.setIcon(new ImageIcon((new File(p.getAlbumArt())).toURI().toURL()));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
