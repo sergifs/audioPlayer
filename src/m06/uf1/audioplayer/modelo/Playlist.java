@@ -104,7 +104,7 @@ public class Playlist {
 
         try {
             FileWriter fichero_01 = new FileWriter("rap.json");
-            fichero_01.write(playList_01.toString());
+            fichero_01.write(playList_02.toString());
             fichero_01.close();
 
             FileWriter fichero_02 = new FileWriter("happy.json");
