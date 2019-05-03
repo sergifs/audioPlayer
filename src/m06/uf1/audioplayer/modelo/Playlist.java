@@ -31,6 +31,10 @@ public class Playlist {
         return nombre;
     }
     
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
     public String getRutaJSON() {
         return rutaJSON;
     }
@@ -80,10 +84,19 @@ public class Playlist {
 
             try {
                 JSONObject playList = (JSONObject)parser.parse(new FileReader("playList.json"));
+                //Nombre
+                setNombre(playList.get("nombre").toString());
+                //Descripción
+                setNombre(playList.get("descripcion").toString());
+                //Ruta Imagen Álbum
+                setAlbumArt(playList.get("rutaImagen").toString());
+                //Array ruta Canciones
                 JSONArray urlList = (JSONArray)playList.get("rutasArchivos");
+                ArrayList rutaArchivos = new ArrayList();
                 for(Object l: urlList){
-                    System.out.println(l);
+                    rutaArchivos.add(l.toString());
                 }
+                setRutaCanciones(rutaArchivos);
             } catch (FileNotFoundException e){
                 e.printStackTrace();
             } catch (IOException ex) {

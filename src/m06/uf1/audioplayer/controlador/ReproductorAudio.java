@@ -30,7 +30,9 @@ public class ReproductorAudio {
     public static void main(String[] args) throws FileNotFoundException {
         
         Playlist playList = new Playlist("hola","buenas"); //Prueba playList
-        playList.leerJSON(); //Prubs playList
+        
+        playList.leerJSON();
+        System.out.println(playList.toString());
         
         try {
             canciones = ListaBibliotecaDOM.cargarCanciones(nombreArchivo);
