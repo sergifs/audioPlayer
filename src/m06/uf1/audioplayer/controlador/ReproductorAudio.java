@@ -66,10 +66,4 @@ public class ReproductorAudio {
         return playlists;
     }
 
-    public static String listarCanciones() {
-        String retorn = "LISTA DE CANCIONES: \nHay un total de " + canciones.size() + " canciones.\n";
-        retorn = canciones.entrySet().stream().map((cancion) -> cancion.toString() + "\n").reduce(retorn, String::concat);
-        return retorn;
-    }
-
 }

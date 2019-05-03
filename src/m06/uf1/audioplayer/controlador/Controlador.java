@@ -57,7 +57,6 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                     audio.stop();
                     break;
                 case "Pause":
-                    JButton btn = (JButton) esdeveniment.getSource();
                     audio.pause();
                     break;
                 case "Resume":
@@ -116,7 +115,11 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
 
     @Override
     public void stateUpdated(BasicPlayerEvent bpe) {
-        //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (bpe.getCode() == BasicPlayerEvent.STOPPED) {
+            if (table.getSelectedRow() < table.getRowCount()-1) {
+                //TO-DO <EJECUTAR EL CODIGO QUE HARÁ GONZALO DE SIGUIENTE CANCION>
+            }
+        }
     }
 
     @Override
