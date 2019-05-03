@@ -5,7 +5,7 @@ package m06.uf1.audioplayer.modelo;
  * @author sergi.f.sellares
  */
 public class Cancion {
-    
+
     private final String nombre;
     private final String autor;
     private final String album;
@@ -19,30 +19,34 @@ public class Cancion {
         this.duracion = duracion;
         this.rutaCancion = rutaCancion;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
+
     public String getAutor() {
         return autor;
     }
+
     public String getAlbum() {
         return album;
     }
+
     public String getDuracion() {
         return duracion;
     }
+
     public String getRutaCancion() {
         return rutaCancion;
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre +
-               "\n Autor: " + autor +
-               "\n Album: " + album +
-               "\n Duracion: " + duracion +
-               "\n Ruta: " + rutaCancion +
-               "\n ---------------------------------------------------";
+        return "Nombre: " + nombre
+                + "\n Autor: " + autor
+                + "\n Album: " + album
+                + "\n Duracion: " + duracion
+                + "\n Ruta: " + rutaCancion
+                + "\n ---------------------------------------------------";
     }
 }

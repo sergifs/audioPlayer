@@ -23,47 +23,46 @@ public class Vista {
         finestra.setLocationRelativeTo(null);
         panell = new JPanel();
         panell.setLayout(new GridLayout(1, 0));
-        
+
         play = new JButton("Play");
         stop = new JButton("Stop");
         pausa = new JButton("Pause");
-        continuar = new JButton("Continue"); 
+        continuar = new JButton("Continue");
         anterior = new JButton("Anterior");
         siguiente = new JButton("Siguiente");
-        
+
         panell.add(anterior);
         panell.add(play);
         panell.add(pausa);
         panell.add(continuar);
         panell.add(stop);
         panell.add(siguiente);
-        
+
         JPanel panel2 = new JPanel();
-        
+
         JComboBox<Cancion> comboBox = new JComboBox();
-        
+
         panel2.add(comboBox);
-        
+
         finestra.add(panel2);
         finestra.add(panell);
-        
+
         //add listener
         pausa.addActionListener(controller);
         pausa.setActionCommand("pausa");
-        
+
         play.addActionListener(controller);
         play.setActionCommand("play");
-        
+
         stop.addActionListener(controller);
         stop.setActionCommand("stop");
-        
+
         continuar.addActionListener(controller);
         continuar.setActionCommand("continuar");
-        
+
         finestra.pack();
         finestra.setVisible(true);
     }
-
 
     public JFrame getFinestra() {
         return finestra;

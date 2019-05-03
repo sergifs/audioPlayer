@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.audioplayer.modelo;
 
 import java.io.File;
@@ -126,9 +121,9 @@ public class ListaBibliotecaDOM {
                 //Array ruta Canciones
                 JSONArray urlList = (JSONArray) playlistJSON.get("rutasArchivos");
                 ArrayList rutaArchivos = new ArrayList();
-                for (Object l : urlList) {
+                urlList.forEach((l) -> {
                     rutaArchivos.add(l.toString());
-                }
+                });
                 playlist.setRutaCanciones(rutaArchivos);
                 System.out.println(playlist.toString());
             } catch (FileNotFoundException e) {
@@ -138,32 +133,4 @@ public class ListaBibliotecaDOM {
             }
         }
     }
-    
-    /*public static void cargarPlaylistsJSON() {
-
-        JSONParser parser = new JSONParser();
-
-        try {
-            JSONObject playlistArrayJSON = (JSONObject) parser.parse(new FileReader("playlist.json"));
-            JSONObject playlistJSON = (JSONObject) playlistArrayJSON.get("nombre");
-            
-            //Nombre
-            Playlist playlist = ReproductorAudio.buscarPlaylist(playlistJSON.get("nombre").toString());
-            //Descripción
-            playlist.setDescripcion(playlistJSON.get("descripcion").toString());
-            //Ruta Imagen Álbum
-            playlist.setAlbumArt(playlistJSON.get("rutaImagen").toString());
-            //Array ruta Canciones
-            JSONArray urlList = (JSONArray) playlistJSON.get("rutasArchivos");
-            ArrayList rutaArchivos = new ArrayList();
-            for (Object l : urlList) {
-                rutaArchivos.add(l.toString());
-            }
-            playlist.setRutaCanciones(rutaArchivos);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException | ParseException ex) {
-            Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }*/
 }
