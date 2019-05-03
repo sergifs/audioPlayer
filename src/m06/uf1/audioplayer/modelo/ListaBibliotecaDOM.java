@@ -113,7 +113,12 @@ public class ListaBibliotecaDOM {
                 //Playlist playlist = ReproductorAudio.buscarPlaylist(Integer.parseInt(playlistJSON.get("id").toString()));
                 Playlist playlist = entry.getValue();
                 System.out.println("Playlist a leer: " + playlist.getRutaJSON());
-                JSONObject playlistJSON = (JSONObject) parser.parse(new FileReader(playlist.getRutaJSON()));
+                JSONObject playlistJSON = null;
+                try {
+                    playlistJSON = (JSONObject) parser.parse(new FileReader(playlist.getRutaJSON()));
+                } catch (ParseException ex) {
+                    Logger.getLogger(ListaBibliotecaDOM.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //Descripción
                 playlist.setDescripcion(playlistJSON.get("descripcion").toString());
                 //Ruta Imagen Álbum
@@ -128,7 +133,7 @@ public class ListaBibliotecaDOM {
                 System.out.println(playlist.toString());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            } catch (IOException | ParseException ex) {
+            } catch (IOException ex) {
                 Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

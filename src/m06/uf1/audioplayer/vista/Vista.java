@@ -59,6 +59,12 @@ public class Vista {
 
         continuar.addActionListener(controller);
         continuar.setActionCommand("continuar");
+        
+        continuar.addActionListener(controller);
+        continuar.setActionCommand("<<<<");
+        
+        continuar.addActionListener(controller);
+        continuar.setActionCommand(">>>>");
 
         finestra.pack();
         finestra.setVisible(true);
