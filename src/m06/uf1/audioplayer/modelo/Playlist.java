@@ -2,6 +2,7 @@ package m06.uf1.audioplayer.modelo;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -28,6 +29,10 @@ public class Playlist {
     
     public String getNombre() {
         return nombre;
+    }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }
     
     public String getRutaJSON() {
@@ -78,11 +83,20 @@ public class Playlist {
         JSONParser parser = new JSONParser();
 
             try {
-                JSONObject playList = (JSONObject)parser.parse(new FileReader("lib/playList.json"));
-                JSONArray urlList = (JSONArray)playList.get("playLists");
+                JSONObject playList = (JSONObject)parser.parse(new FileReader("playList.json"));
+                //Nombre
+                setNombre(playList.get("nombre").toString());
+                //Descripción
+                setNombre(playList.get("descripcion").toString());
+                //Ruta Imagen Álbum
+                setAlbumArt(playList.get("rutaImagen").toString());
+                //Array ruta Canciones
+                JSONArray urlList = (JSONArray)playList.get("rutasArchivos");
+                ArrayList rutaArchivos = new ArrayList();
                 for(Object l: urlList){
-                    System.out.println(l);
+                    rutaArchivos.add(l.toString());
                 }
+                setRutaCanciones(rutaArchivos);
             } catch (FileNotFoundException e){
                 e.printStackTrace();
             } catch (IOException ex) {
@@ -90,5 +104,26 @@ public class Playlist {
             } catch (ParseException ex) {
                 Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    public void crearJSON(){
+        
+        JSONObject playList = new JSONObject();
+        playList.put("nombre" , "playList_1");
+        playList.put("descripcion" , "descripcion playList_1");
+        playList.put("rutaImagen" , "rutaiImagen");
+        JSONArray rutaArchivos = new JSONArray();
+        rutaArchivos.add("rutaArchivo1");
+        rutaArchivos.add("rutaArchivo2");
+        rutaArchivos.add("rutaArchivo3");
+        playList.put("rutasArchivos", rutaArchivos);
+        
+        try {
+            FileWriter fichero = new FileWriter("playList.json");
+            fichero.write(playList.toString());
+            fichero.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
