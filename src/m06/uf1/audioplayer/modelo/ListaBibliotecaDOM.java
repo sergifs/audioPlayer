@@ -7,11 +7,19 @@ package m06.uf1.audioplayer.modelo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import m06.uf1.audioplayer.controlador.ReproductorAudio;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,18 +31,15 @@ import org.xml.sax.SAXException;
  * @author sergi.f.sellares
  */
 public class ListaBibliotecaDOM {
-    
-    
-    private Map<Integer, Playlist> playlists = new HashMap();;
 
     public static Map<Integer, Cancion> cargarCanciones(String nombreArchivo) throws FileNotFoundException, IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         Document document;
         DocumentBuilder builder = factory.newDocumentBuilder();
-        
+
         Map<Integer, Cancion> canciones = new HashMap();
-        
+
         try {
 
             document = builder.parse(new File(nombreArchivo));
@@ -61,13 +66,13 @@ public class ListaBibliotecaDOM {
                     System.out.println(cancion1.toString());
                 }
             }
-            
+
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
         return canciones;
     }
-    
+
     public static Map<Integer, Playlist> cargarPlaylists(String nombreArchivo) throws FileNotFoundException, IOException, ParserConfigurationException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -75,7 +80,7 @@ public class ListaBibliotecaDOM {
         DocumentBuilder builder = factory.newDocumentBuilder();
 
         Map<Integer, Playlist> playlists = new HashMap();
-        
+
         try {
 
             document = builder.parse(new File(nombreArchivo));
@@ -96,10 +101,68 @@ public class ListaBibliotecaDOM {
                     System.out.println(playlist1.toString());
                 }
             }
-            
+
         } catch (SAXException ex) {
             ex.printStackTrace();
         }
         return playlists;
     }
+
+    public static void cargarPlaylistsJSON() {
+
+        JSONParser parser = new JSONParser();
+
+        for (Map.Entry<Integer, Playlist> entry : ReproductorAudio.getPlaylists().entrySet()) {
+            try {
+                //ID
+                //Playlist playlist = ReproductorAudio.buscarPlaylist(Integer.parseInt(playlistJSON.get("id").toString()));
+                Playlist playlist = entry.getValue();
+                System.out.println("Playlist a leer: " + playlist.getRutaJSON());
+                JSONObject playlistJSON = (JSONObject) parser.parse(new FileReader(playlist.getRutaJSON()));
+                //Descripción
+                playlist.setDescripcion(playlistJSON.get("descripcion").toString());
+                //Ruta Imagen Álbum
+                playlist.setAlbumArt(playlistJSON.get("rutaImagen").toString());
+                //Array ruta Canciones
+                JSONArray urlList = (JSONArray) playlistJSON.get("rutasArchivos");
+                ArrayList rutaArchivos = new ArrayList();
+                for (Object l : urlList) {
+                    rutaArchivos.add(l.toString());
+                }
+                playlist.setRutaCanciones(rutaArchivos);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException | ParseException ex) {
+                Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    /*public static void cargarPlaylistsJSON() {
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            JSONObject playlistArrayJSON = (JSONObject) parser.parse(new FileReader("playlist.json"));
+            JSONObject playlistJSON = (JSONObject) playlistArrayJSON.get("nombre");
+            
+            //Nombre
+            Playlist playlist = ReproductorAudio.buscarPlaylist(playlistJSON.get("nombre").toString());
+            //Descripción
+            playlist.setDescripcion(playlistJSON.get("descripcion").toString());
+            //Ruta Imagen Álbum
+            playlist.setAlbumArt(playlistJSON.get("rutaImagen").toString());
+            //Array ruta Canciones
+            JSONArray urlList = (JSONArray) playlistJSON.get("rutasArchivos");
+            ArrayList rutaArchivos = new ArrayList();
+            for (Object l : urlList) {
+                rutaArchivos.add(l.toString());
+            }
+            playlist.setRutaCanciones(rutaArchivos);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException | ParseException ex) {
+            Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }

@@ -28,15 +28,10 @@ public class ReproductorAudio {
     private static Map<Integer, Playlist> playlists = new HashMap();
 
     public static void main(String[] args) throws FileNotFoundException {
-        
-        Playlist playList = new Playlist("hola","buenas"); //Prueba playList
-        
-        playList.leerJSON();
-        System.out.println(playList.toString());
-        
         try {
             canciones = ListaBibliotecaDOM.cargarCanciones(nombreArchivo);
             playlists = ListaBibliotecaDOM.cargarPlaylists(nombreArchivo);
+            ListaBibliotecaDOM.cargarPlaylistsJSON();
         } catch (IOException ex) {
             System.out.println("Error d'entrada/sortida");
         } catch (ParserConfigurationException ex) {
@@ -57,6 +52,10 @@ public class ReproductorAudio {
 
     public static Cancion buscarCancion(int id) {
         return canciones.get(id);
+    }
+    
+    public static Playlist buscarPlaylist(int id) {
+        return playlists.get(id);
     }
     
     public static Map<Integer, Cancion> getCanciones() {
