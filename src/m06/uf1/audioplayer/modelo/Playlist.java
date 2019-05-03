@@ -2,6 +2,7 @@ package m06.uf1.audioplayer.modelo;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -78,8 +79,8 @@ public class Playlist {
         JSONParser parser = new JSONParser();
 
             try {
-                JSONObject playList = (JSONObject)parser.parse(new FileReader("lib/playList.json"));
-                JSONArray urlList = (JSONArray)playList.get("playLists");
+                JSONObject playList = (JSONObject)parser.parse(new FileReader("playList.json"));
+                JSONArray urlList = (JSONArray)playList.get("rutasArchivos");
                 for(Object l: urlList){
                     System.out.println(l);
                 }
@@ -90,5 +91,26 @@ public class Playlist {
             } catch (ParseException ex) {
                 Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    public void crearJSON(){
+        
+        JSONObject playList = new JSONObject();
+        playList.put("nombre" , "playList_1");
+        playList.put("descripcion" , "descripcion playList_1");
+        playList.put("rutaImagen" , "rutaiImagen");
+        JSONArray rutaArchivos = new JSONArray();
+        rutaArchivos.add("rutaArchivo1");
+        rutaArchivos.add("rutaArchivo2");
+        rutaArchivos.add("rutaArchivo3");
+        playList.put("rutasArchivos", rutaArchivos);
+        
+        try {
+            FileWriter fichero = new FileWriter("playList.json");
+            fichero.write(playList.toString());
+            fichero.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
