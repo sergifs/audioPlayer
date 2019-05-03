@@ -8,6 +8,8 @@ package m06.uf1.audioplayer.vista;
 import java.util.Map;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import m06.uf1.audioplayer.controlador.Controlador;
 import m06.uf1.audioplayer.controlador.ListSelectionListenerPersonalized;
@@ -212,7 +214,11 @@ public class View extends javax.swing.JFrame {
         jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
     }
     
-    public void setPlaylistArt(String rutaPlaylistArt) throws MalformedURLException {
-        playlist_art.setIcon(new ImageIcon((new File(rutaPlaylistArt)).toURI().toURL()));
+    public void setPlaylistArt(String rutaPlaylistArt) {
+        try {
+            playlist_art.setIcon(new ImageIcon((new File(rutaPlaylistArt)).toURI().toURL()));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

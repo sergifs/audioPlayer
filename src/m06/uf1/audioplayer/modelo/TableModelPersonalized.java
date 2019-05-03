@@ -33,7 +33,6 @@ public class TableModelPersonalized extends AbstractTableModel {
             while (i.hasNext()) {
                 Cancion c = (Cancion) ((Map.Entry) i.next()).getValue();
                 for(String ruta : rutas){
-                    System.out.println(ruta + " ---- " +  c.getRutaCancion());
                     if(ruta.equals(c.getRutaCancion())){
                         canciones.add(c);
                         break;
