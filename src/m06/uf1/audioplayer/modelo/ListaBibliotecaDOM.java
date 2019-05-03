@@ -130,6 +130,7 @@ public class ListaBibliotecaDOM {
                     rutaArchivos.add(l.toString());
                 }
                 playlist.setRutaCanciones(rutaArchivos);
+                System.out.println(playlist.toString());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException | ParseException ex) {

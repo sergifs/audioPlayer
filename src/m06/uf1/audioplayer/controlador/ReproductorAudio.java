@@ -28,6 +28,11 @@ public class ReproductorAudio {
     private static Map<Integer, Playlist> playlists = new HashMap();
 
     public static void main(String[] args) throws FileNotFoundException {
+        
+        /*Playlist playList = new Playlist("hola","buenas"); //Prueba playList
+        playList.crearJSON();
+        System.out.println(playList.toString());*/
+        
         try {
             canciones = ListaBibliotecaDOM.cargarCanciones(nombreArchivo);
             playlists = ListaBibliotecaDOM.cargarPlaylists(nombreArchivo);
