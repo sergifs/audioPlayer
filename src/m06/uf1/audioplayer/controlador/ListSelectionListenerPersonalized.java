@@ -22,24 +22,17 @@ import m06.uf1.audioplayer.vista.View;
 public class ListSelectionListenerPersonalized implements ListSelectionListener {
 
     private TableModelPersonalized tm;
+    private JTable table;
 
-    public ListSelectionListenerPersonalized(TableModelPersonalized tm) {
+    public ListSelectionListenerPersonalized(TableModelPersonalized tm, JTable table) {
         this.tm = tm;
+        this.table = table;
     }
 
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-        if (lse.getSource() instanceof JTable) {
-            JTable table = (JTable) lse.getSource();
-            if (!lse.getValueIsAdjusting()) {
-                Audio.GetPlayer().openSong(tm.getCancion(table.getSelectedRow()));
-                try {
-                    Audio.GetPlayer().play();
-                } catch (BasicPlayerException ex) {
-                    Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        if (!lse.getValueIsAdjusting() && table.hasFocus()) {
+            Audio.GetPlayer().openSong(tm.getCancion(table.getSelectedRow()));
         }
     }
-
 }

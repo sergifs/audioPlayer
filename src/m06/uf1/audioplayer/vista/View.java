@@ -241,20 +241,20 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel playlist_art;
     // End of variables declaration//GEN-END:variables
-    
+
     public static final String[] NombreColumnas = new String[]{"Nombre", "Autor", "Album", "Duración"};
-    
-    private void personalizarTodo(Controlador control){
+
+    private void personalizarTodo(Controlador control) {
         control.SetSlider(jSlider1);
         control.SetTable(jTable1);
         control.SetPlaylistArt(playlist_art);
-        
+
         TableModelPersonalized tm = new TableModelPersonalized(null, NombreColumnas);
         jTable1.setModel(tm);
         jTable1.changeSelection(0, 0, false, false);
         jTable1.setDefaultRenderer(Object.class, new TableCellRendererPersonalized());
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListenerPersonalized(tm));
-        
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListenerPersonalized(tm, jTable1));
+
         jButton1.addActionListener(control);
         jButton2.addActionListener(control);
         jButton3.addActionListener(control);
@@ -265,15 +265,15 @@ public class View extends javax.swing.JFrame {
         
         jComboBox1.removeAllItems();
         jComboBox1.addItem("Ninguna");
-        for(Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()){
-            jComboBox1.addItem(((Playlist)entry.getValue()).getNombre());
+        for (Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()) {
+            jComboBox1.addItem(((Playlist) entry.getValue()).getNombre());
         }
-        
+
         jComboBox1.addItemListener(control);
-        
+
     }
-    
-    public void setNewModel(Playlist ply){
+
+    public void setNewModel(Playlist ply) {
         jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
     }
 }
