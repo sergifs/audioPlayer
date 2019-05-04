@@ -17,7 +17,7 @@ import m06.uf1.audioplayer.controlador.ReproductorAudio;
  */
 public class TableModelPersonalized extends AbstractTableModel {
 
-    private ArrayList<Cancion> canciones;
+    private static ArrayList<Cancion> canciones;
     private String[] nombreColumna;
 
     public TableModelPersonalized(Playlist playlist, String[] nombreColumna) {
@@ -82,7 +82,7 @@ public class TableModelPersonalized extends AbstractTableModel {
         return nombreColumna[i];
     }
 
-    public Cancion getCancion(int row) {
+    public static Cancion getCancion(int row) {
         return canciones.get(row);
     }
 }
