@@ -110,8 +110,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
             } catch (MalformedURLException ex) {
                 Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else{
+        } else {
             playlist_art.setIcon(null);
         }
         TableModelPersonalized tmp = new TableModelPersonalized(p, View.NombreColumnas);
@@ -138,8 +137,9 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     @Override
     public void stateUpdated(BasicPlayerEvent bpe) {
         if (bpe.getCode() == BasicPlayerEvent.STOPPED) {
-            if (table.getSelectedRow() < table.getRowCount() - 1) {
-                //TO-DO <EJECUTAR EL CODIGO QUE HARÁ GONZALO DE SIGUIENTE CANCION>
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow < table.getRowCount() - 1) {
+                table.setRowSelectionInterval(selectedRow + 1, selectedRow + 1);
             }
         } else if (bpe.getCode() == BasicPlayerEvent.OPENED) {
             try {

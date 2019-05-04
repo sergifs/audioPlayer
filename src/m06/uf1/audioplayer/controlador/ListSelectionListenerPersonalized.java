@@ -5,15 +5,11 @@
  */
 package m06.uf1.audioplayer.controlador;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javazoom.jlgui.basicplayer.BasicPlayerException;
 import m06.uf1.audioplayer.modelo.Audio;
 import m06.uf1.audioplayer.modelo.TableModelPersonalized;
-import m06.uf1.audioplayer.vista.View;
 
 /**
  *

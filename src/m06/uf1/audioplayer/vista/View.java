@@ -261,8 +261,7 @@ public class View extends javax.swing.JFrame {
         jButton4.addActionListener(control);
         jButton5.addActionListener(control);
         jButton6.addActionListener(control);
-        
-        
+
         jComboBox1.removeAllItems();
         jComboBox1.addItem("Ninguna");
         for (Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()) {
