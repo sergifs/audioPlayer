@@ -33,6 +33,7 @@ public class View extends javax.swing.JFrame {
         personalizarTodo(control);
     }
 
+    public ListSelectionListenerPersonalized lsl = null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,7 +254,7 @@ public class View extends javax.swing.JFrame {
         jTable1.setModel(tm);
         jTable1.changeSelection(0, 0, false, false);
         jTable1.setDefaultRenderer(Object.class, new TableCellRendererPersonalized());
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListenerPersonalized(tm, jTable1));
+        jTable1.getSelectionModel().addListSelectionListener(lsl = new ListSelectionListenerPersonalized(jTable1));
 
         jButton1.addActionListener(control);
         jButton2.addActionListener(control);
@@ -269,10 +270,5 @@ public class View extends javax.swing.JFrame {
         }
 
         jComboBox1.addItemListener(control);
-
-    }
-
-    public void setNewModel(Playlist ply) {
-        jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
     }
 }

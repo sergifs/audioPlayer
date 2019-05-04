@@ -20,16 +20,31 @@ public class Audio extends BasicPlayer {
 
     private Audio() {
         super();
+        if(player != null)
+            throw new IllegalAccessError("No se puede hacer esto");
     }
 
     public boolean openSong(Cancion c) {
         boolean resultado = false;
+        
         try {
-            open(new File(c.getRutaCancion()));
+            stop();
+        } catch (BasicPlayerException ex) {
+            Logger.getLogger(Audio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            super.open(new File(c.getRutaCancion()));
             resultado = true;
         } catch (BasicPlayerException ex) {
             Logger.getLogger(Audio.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
+
+    @Override
+    public void play() throws BasicPlayerException {
+        super.play(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
