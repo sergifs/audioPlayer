@@ -62,6 +62,26 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                 case "Resume":
                     audio.resume();
                     break;
+                case "Before":
+                    if(table.getSelectedRow() > 0){
+                        System.out.println(table.getSelectedRow());
+                        table.setRowSelectionInterval(table.getSelectedRow()-1, table.getSelectedRow()-1);
+                        System.out.println(table.getSelectedRow());
+                    }
+                    else{
+                        table.setRowSelectionInterval(table.getRowCount()-1, table.getRowCount()-1);
+                    }
+                    break;
+                case "Next":
+                    if(table.getSelectedRow() < table.getRowCount()-1){
+                        System.out.println(table.getSelectedRow());
+                        table.setRowSelectionInterval(table.getSelectedRow()+1, table.getSelectedRow()+1);
+                        System.out.println(table.getSelectedRow());
+                    }
+                    else{
+                        table.setRowSelectionInterval(0, 0);
+                    }
+                    break;
             }
         } catch (BasicPlayerException e) {
             e.printStackTrace();
