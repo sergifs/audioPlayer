@@ -32,7 +32,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     private JSlider slider;
     private JTable table;
     private JLabel playlist_art;
-    
+
     public Controlador() throws BasicPlayerException {
         View v = new View(this);
         v.setVisible(true);
@@ -71,22 +71,22 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void SetSlider(JSlider slider) {
         this.slider = slider;
     }
-    
-    public void SetTable(JTable table){
+
+    public void SetTable(JTable table) {
         this.table = table;
     }
-    
-    public void SetPlaylistArt(JLabel playlist_art){
+
+    public void SetPlaylistArt(JLabel playlist_art) {
         this.playlist_art = playlist_art;
     }
-    
+
     //ItemListener
     @Override
     public void itemStateChanged(ItemEvent ie) {
         JComboBox comboBox = (JComboBox) ie.getSource();
-        int i = comboBox.getSelectedIndex()-1;
+        int i = comboBox.getSelectedIndex() - 1;
         Playlist p = null;
-        if(i > -1){
+        if (i > -1) {
             p = ReproductorAudio.getPlaylists().get(i);
         }
         table.setModel(new TableModelPersonalized(p, View.NombreColumnas));
@@ -95,7 +95,8 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         } catch (MalformedURLException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        table.setRowSelectionInterval(0, 0);
+
     }
 
     //BasicPlayerListener
@@ -116,7 +117,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     @Override
     public void stateUpdated(BasicPlayerEvent bpe) {
         if (bpe.getCode() == BasicPlayerEvent.STOPPED) {
-            if (table.getSelectedRow() < table.getRowCount()-1) {
+            if (table.getSelectedRow() < table.getRowCount() - 1) {
                 //TO-DO <EJECUTAR EL CODIGO QUE HARÁ GONZALO DE SIGUIENTE CANCION>
             }
         }

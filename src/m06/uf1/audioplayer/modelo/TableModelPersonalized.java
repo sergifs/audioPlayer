@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.audioplayer.modelo;
 
 import java.util.ArrayList;
@@ -32,8 +27,8 @@ public class TableModelPersonalized extends AbstractTableModel {
             ArrayList<String> rutas = playlist.getRutaCanciones();
             while (i.hasNext()) {
                 Cancion c = (Cancion) ((Map.Entry) i.next()).getValue();
-                for(String ruta : rutas){
-                    if(ruta.equals(c.getRutaCancion())){
+                for (String ruta : rutas) {
+                    if (ruta.equals(c.getRutaCancion())) {
                         canciones.add(c);
                         break;
                     }

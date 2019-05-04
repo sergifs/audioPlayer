@@ -104,20 +104,20 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton6)
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addGap(4, 4, 4))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
-                .addGap(78, 78, 78))
+                .addComponent(jButton5)
+                .addGap(84, 84, 84))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +176,7 @@ public class View extends javax.swing.JFrame {
                                 .addComponent(playlist_art, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(107, 107, 107))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -236,37 +236,36 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel playlist_art;
     // End of variables declaration//GEN-END:variables
-    
+
     public static final String[] NombreColumnas = new String[]{"Nombre", "Autor", "Album", "Duración"};
-    
-    private void personalizarTodo(Controlador control){
+
+    private void personalizarTodo(Controlador control) {
         control.SetSlider(jSlider1);
         control.SetTable(jTable1);
         control.SetPlaylistArt(playlist_art);
-        
+
         TableModelPersonalized tm = new TableModelPersonalized(null, NombreColumnas);
         jTable1.setModel(tm);
         jTable1.changeSelection(0, 0, false, false);
         jTable1.setDefaultRenderer(Object.class, new TableCellRendererPersonalized());
         jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListenerPersonalized(tm));
-        
+
         jButton1.addActionListener(control);
         jButton2.addActionListener(control);
         jButton3.addActionListener(control);
         jButton4.addActionListener(control);
-        
-        
+
         jComboBox1.removeAllItems();
         jComboBox1.addItem("Ninguna");
-        for(Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()){
-            jComboBox1.addItem(((Playlist)entry.getValue()).getNombre());
+        for (Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()) {
+            jComboBox1.addItem(((Playlist) entry.getValue()).getNombre());
         }
-        
+
         jComboBox1.addItemListener(control);
-        
+
     }
-    
-    public void setNewModel(Playlist ply){
+
+    public void setNewModel(Playlist ply) {
         jTable1.setModel(new TableModelPersonalized(ply, NombreColumnas));
     }
 }
