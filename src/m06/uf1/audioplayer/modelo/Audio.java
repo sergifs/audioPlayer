@@ -11,11 +11,7 @@ public class Audio extends BasicPlayer {
 
     public static Audio GetPlayer() {
         if (player == null) {
-            synchronized (Audio.class) {
-                if (player == null) {
-                    player = new Audio();
-                }
-            }
+            player = new Audio();
         }
         return player;
     }

@@ -28,17 +28,16 @@ import m06.uf1.audioplayer.vista.View;
 
 public class Controlador implements ActionListener, ItemListener, BasicPlayerListener, ChangeListener {
 
-    private Audio audio;
     private JSlider slider;
     private JTable table;
     private JLabel playlist_art;
 
     public Controlador() throws BasicPlayerException {
-        audio = Audio.GetPlayer();
+        Audio.GetPlayer();
         View v = new View(this);
         v.setVisible(true);
-        audio.addBasicPlayerListener(this);
-        audio.openSong(ReproductorAudio.buscarCancion(0));
+        Audio.GetPlayer().addBasicPlayerListener(this);
+        Audio.GetPlayer().openSong(ReproductorAudio.buscarCancion(0));
     }
 
     //ActionListener
@@ -51,40 +50,38 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         try {
             switch (action) {
                 case "Play":
-                    audio.play();
+                    Audio.GetPlayer().play();
                     break;
                 case "Stop":
-                    audio.stop();
+                    Audio.GetPlayer().stop();
                     break;
                 case "Pause":
-                    audio.pause();
+                    Audio.GetPlayer().pause();
                     break;
                 case "Resume":
-                    audio.resume();
+                    Audio.GetPlayer().resume();
                     break;
                 case "Before":
-                    if(table.getSelectedRow() > 0){
+                    if (table.getSelectedRow() > 0) {
                         System.out.println(table.getSelectedRow());
-                        table.setRowSelectionInterval(table.getSelectedRow()-1, table.getSelectedRow()-1);
+                        table.setRowSelectionInterval(table.getSelectedRow() - 1, table.getSelectedRow() - 1);
                         System.out.println(table.getSelectedRow());
-                    }
-                    else{
-                        table.setRowSelectionInterval(table.getRowCount()-1, table.getRowCount()-1);
+                    } else {
+                        table.setRowSelectionInterval(table.getRowCount() - 1, table.getRowCount() - 1);
                     }
                     break;
                 case "Next":
-                    if(table.getSelectedRow() < table.getRowCount()-1){
+                    if (table.getSelectedRow() < table.getRowCount() - 1) {
                         System.out.println(table.getSelectedRow());
-                        table.setRowSelectionInterval(table.getSelectedRow()+1, table.getSelectedRow()+1);
+                        table.setRowSelectionInterval(table.getSelectedRow() + 1, table.getSelectedRow() + 1);
                         System.out.println(table.getSelectedRow());
-                    }
-                    else{
+                    } else {
                         table.setRowSelectionInterval(0, 0);
                     }
                     break;
             }
         } catch (BasicPlayerException e) {
-            e.printStackTrace();
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -108,14 +105,19 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         Playlist p = null;
         if (i > -1) {
             p = ReproductorAudio.getPlaylists().get(i);
+            try {
+                playlist_art.setIcon(new ImageIcon((new File(p.getAlbumArt())).toURI().toURL()));
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        table.setModel(new TableModelPersonalized(p, View.NombreColumnas));
-        try {
-            playlist_art.setIcon(new ImageIcon((new File(p.getAlbumArt())).toURI().toURL()));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        else{
+            playlist_art.setIcon(null);
         }
+        TableModelPersonalized tmp = new TableModelPersonalized(p, View.NombreColumnas);
+        table.setModel(tmp);
         table.setRowSelectionInterval(0, 0);
+        Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(0));
 
     }
 
@@ -139,10 +141,9 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
             if (table.getSelectedRow() < table.getRowCount() - 1) {
                 //TO-DO <EJECUTAR EL CODIGO QUE HARÁ GONZALO DE SIGUIENTE CANCION>
             }
-        }
-        else if(bpe.getCode() == BasicPlayerEvent.OPENED){
+        } else if (bpe.getCode() == BasicPlayerEvent.OPENED) {
             try {
-                audio.play();
+                Audio.GetPlayer().play();
                 System.out.println("A");
             } catch (BasicPlayerException ex) {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);

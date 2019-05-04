@@ -16,7 +16,6 @@ public class TableCellRendererPersonalized extends DefaultTableCellRenderer {
         Component c = super.getTableCellRendererComponent(jtable, o, bln, bln1, i, i1);
         if (jtable.getSelectedRow() == i) {
             c.setBackground(Color.yellow);
-            Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(i));
         } else {
             c.setBackground(Color.white);
         }
