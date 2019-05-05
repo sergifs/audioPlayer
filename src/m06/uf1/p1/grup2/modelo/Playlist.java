@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer.modelo;
+package m06.uf1.p1.grup2.modelo;
 
 import java.io.FileWriter;
 import java.io.IOException;

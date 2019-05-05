@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer.controlador;
+package m06.uf1.p1.grup2.controlador;
 
 /**
  *
@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
-import m06.uf1.audioplayer.modelo.ListaBibliotecaDOM;
+import m06.uf1.p1.grup2.modelo.ListaBibliotecaDOM;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
-import m06.uf1.audioplayer.modelo.Cancion;
-import m06.uf1.audioplayer.modelo.Playlist;
+import m06.uf1.p1.grup2.modelo.Cancion;
+import m06.uf1.p1.grup2.modelo.Playlist;
 
 public class ReproductorAudio {
 

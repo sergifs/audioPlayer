@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer.modelo;
+package m06.uf1.p1.grup2.modelo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import m06.uf1.audioplayer.controlador.ReproductorAudio;
+import m06.uf1.p1.grup2.controlador.ReproductorAudio;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

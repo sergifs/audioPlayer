@@ -1,11 +1,11 @@
-package m06.uf1.audioplayer.controlador;
+package m06.uf1.p1.grup2.controlador;
 
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import m06.uf1.audioplayer.modelo.Audio;
-import m06.uf1.audioplayer.modelo.Cancion;
-import m06.uf1.audioplayer.modelo.TableModelPersonalized;
+import m06.uf1.p1.grup2.modelo.Audio;
+import m06.uf1.p1.grup2.modelo.Cancion;
+import m06.uf1.p1.grup2.modelo.TableModelPersonalized;
 
 /**
  *

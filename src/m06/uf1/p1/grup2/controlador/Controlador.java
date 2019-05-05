@@ -1,6 +1,6 @@
-package m06.uf1.audioplayer.controlador;
+package m06.uf1.p1.grup2.controlador;
 
-import m06.uf1.audioplayer.modelo.Audio;
+import m06.uf1.p1.grup2.modelo.Audio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -21,9 +21,9 @@ import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import javazoom.jlgui.basicplayer.BasicPlayerListener;
-import m06.uf1.audioplayer.modelo.Playlist;
-import m06.uf1.audioplayer.modelo.TableModelPersonalized;
-import m06.uf1.audioplayer.vista.View;
+import m06.uf1.p1.grup2.modelo.Playlist;
+import m06.uf1.p1.grup2.modelo.TableModelPersonalized;
+import m06.uf1.p1.grup2.vista.View;
 
 public class Controlador implements ActionListener, ItemListener, BasicPlayerListener, ChangeListener {
 

@@ -1,12 +1,12 @@
-package m06.uf1.audioplayer.vista;
+package m06.uf1.p1.grup2.vista;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import m06.uf1.audioplayer.controlador.Controlador;
-import m06.uf1.audioplayer.modelo.Cancion;
+import m06.uf1.p1.grup2.controlador.Controlador;
+import m06.uf1.p1.grup2.modelo.Cancion;
 
 public class Vista {
 

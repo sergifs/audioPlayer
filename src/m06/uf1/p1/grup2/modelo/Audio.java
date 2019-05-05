@@ -1,4 +1,4 @@
-package m06.uf1.audioplayer.modelo;
+package m06.uf1.p1.grup2.modelo;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javazoom.jlgui.basicplayer.BasicPlayer;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
-import m06.uf1.audioplayer.controlador.Controlador;
+import m06.uf1.p1.grup2.controlador.Controlador;
 
 // http://www.javazoom.net/jlgui/api.html
 public class Audio extends BasicPlayer {

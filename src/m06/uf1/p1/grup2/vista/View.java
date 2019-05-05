@@ -1,12 +1,12 @@
-package m06.uf1.audioplayer.vista;
+package m06.uf1.p1.grup2.vista;
 
-import m06.uf1.audioplayer.controlador.Controlador;
-import m06.uf1.audioplayer.controlador.ListSelectionListenerPersonalized;
-import m06.uf1.audioplayer.controlador.ReproductorAudio;
+import m06.uf1.p1.grup2.controlador.Controlador;
+import m06.uf1.p1.grup2.controlador.ListSelectionListenerPersonalized;
+import m06.uf1.p1.grup2.controlador.ReproductorAudio;
 
-import m06.uf1.audioplayer.modelo.Playlist;
-import m06.uf1.audioplayer.modelo.TableCellRendererPersonalized;
-import m06.uf1.audioplayer.modelo.TableModelPersonalized;
+import m06.uf1.p1.grup2.modelo.Playlist;
+import m06.uf1.p1.grup2.modelo.TableCellRendererPersonalized;
+import m06.uf1.p1.grup2.modelo.TableModelPersonalized;
 
 /**
  *
