@@ -132,6 +132,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         long duration = (long) map.get("duration");
         slider.setValue(0);
         slider.setMaximum((int) (duration / 100));
+        min_time.setText("00:00");
         max_time.setText(secondsToString(Integer.parseInt(Integer.toString((int) duration).substring(0, 2))));
     }
 
