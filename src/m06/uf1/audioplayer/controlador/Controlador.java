@@ -142,7 +142,14 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
 
     @Override
     public void progress(int i, long l, byte[] bytes, Map map) {
-        slider.setValue((int) ((long) map.get("mp3.position.microseconds") / 100));
+        int duration = (int) ((long) map.get("mp3.position.microseconds") / 100);
+        int microseconds = (int) ((long) map.get("mp3.position.microseconds") / 100);
+        slider.setValue(microseconds);
+        if ((Integer.toString((int) duration)).length() == 5) {
+            min_time.setText(secondsToString(Integer.parseInt(Integer.toString((int) duration).substring(0, 1))));
+        } else if ((Integer.toString((int) duration)).length() == 6) {
+            min_time.setText(secondsToString(Integer.parseInt(Integer.toString((int) duration).substring(0, 2))));
+        }
     }
 
     boolean control = false;
