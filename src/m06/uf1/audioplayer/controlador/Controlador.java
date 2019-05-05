@@ -31,6 +31,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     private JTable table;
     private JLabel playlist_art;
     private JLabel min_time, max_time;
+    private JLabel lbl_nombre;
     private final View view;
 
     public Controlador() throws BasicPlayerException {
@@ -54,6 +55,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                     break;
                 case "Stop":
                     Audio.GetPlayer().stop();
+                    min_time.setText("00:00");
                     break;
                 case "Pause":
                     Audio.GetPlayer().pause();
@@ -63,18 +65,18 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                     break;
                 case "Before":
                     if (table.getSelectedRow() > 0) {
-                        System.out.println(table.getSelectedRow());
+
                         table.setRowSelectionInterval(table.getSelectedRow() - 1, table.getSelectedRow() - 1);
-                        System.out.println(table.getSelectedRow());
+
                     } else {
                         table.setRowSelectionInterval(table.getRowCount() - 1, table.getRowCount() - 1);
                     }
                     break;
                 case "Next":
                     if (table.getSelectedRow() < table.getRowCount() - 1) {
-                        System.out.println(table.getSelectedRow());
+
                         table.setRowSelectionInterval(table.getSelectedRow() + 1, table.getSelectedRow() + 1);
-                        System.out.println(table.getSelectedRow());
+
                     } else {
                         table.setRowSelectionInterval(0, 0);
                     }
@@ -92,9 +94,14 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void SetTable(JTable table) {
         this.table = table;
     }
+    
 
     public void SetPlaylistArt(JLabel playlist_art) {
         this.playlist_art = playlist_art;
+    }
+    
+     public void SetLblNombre(JLabel lbl_nombre) {
+        this.lbl_nombre = lbl_nombre;
     }
 
     public void SetTimers(JLabel min_time, JLabel max_time) {
@@ -134,6 +141,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         slider.setMaximum((int) (duration / 100));
         min_time.setText("00:00");
         max_time.setText(secondsToString(Integer.parseInt(Integer.toString((int) duration).substring(0, 2))));
+        lbl_nombre.setText(Audio.getCurrentCancion().getNombre() + " - " + Audio.getCurrentCancion().getAutor());
     }
 
     private String secondsToString(int pTime) {
@@ -166,7 +174,9 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                     Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(selectedRow + 1), 0);
                     table.getSelectionModel().addListSelectionListener(view.lsl);
                 }
-            } else control = bpe.getPosition() > -1;
+            } else {
+                control = bpe.getPosition() > -1;
+            }
         } else if (bpe.getCode() == BasicPlayerEvent.OPENED) {
             try {
                 Audio.GetPlayer().play();
@@ -176,14 +186,14 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         }
     }
 
-    @Override
-    public void setController(BasicController bc) {
-        //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     //ChangeListener
     @Override
     public void stateChanged(ChangeEvent ce) {
         slider = (JSlider) ce.getSource();
+    }
+
+    @Override
+    public void setController(BasicController bc) {
+        
     }
 }

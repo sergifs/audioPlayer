@@ -21,7 +21,7 @@ public class ListSelectionListenerPersonalized implements ListSelectionListener 
 
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-        System.out.println(System.currentTimeMillis() + " -- " + lse.getValueIsAdjusting() + " / " + lse.getSource().getClass().getSimpleName());
+
         if (!lse.getValueIsAdjusting()) {
             Cancion c = TableModelPersonalized.getCancion(table.getSelectedRow());
             if (c != null) {
