@@ -7,12 +7,11 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.net.MalformedURLException;
-import java.sql.Time;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -32,13 +31,15 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     private JSlider slider;
     private JTable table;
     private JLabel playlist_art;
+    private JLabel min_time, max_time;
     private View view;
+
     public Controlador() throws BasicPlayerException {
         Audio.GetPlayer();
         view = new View(this);
         view.setVisible(true);
         Audio.GetPlayer().addBasicPlayerListener(this);
-        Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(0));
+        Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(0), 0);
     }
 
     //ActionListener
@@ -97,6 +98,11 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         this.playlist_art = playlist_art;
     }
 
+    public void SetTimers(JLabel min_time, JLabel max_time) {
+        this.min_time = min_time;
+        this.max_time = max_time;
+    }
+
     //ItemListener
     @Override
     public void itemStateChanged(ItemEvent ie) {
@@ -118,8 +124,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
         table.setModel(tmp);
         table.setRowSelectionInterval(0, 0);
         table.getSelectionModel().addListSelectionListener(view.lsl);
-        Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(0));
-
+        Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(0), 100);
     }
 
     //BasicPlayerListener
@@ -127,33 +132,36 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     public void opened(Object o, Map map) {
         long duration = (long) map.get("duration");
         slider.setValue(0);
-        slider.setMaximum((int) (duration/100));
-        System.out.println(duration);
+        slider.setMaximum((int) (duration / 100));
+        max_time.setText(secondsToString(Integer.parseInt(Integer.toString((int) duration).substring(0, 2))));
+    }
+
+    private String secondsToString(int pTime) {
+        return String.format("%02d:%02d", pTime / 60, pTime % 60);
     }
 
     @Override
     public void progress(int i, long l, byte[] bytes, Map map) {
-        slider.setValue((int) ((long) map.get("mp3.position.microseconds")/100));
+        slider.setValue((int) ((long) map.get("mp3.position.microseconds") / 100));
     }
 
     boolean control = false;
+
     @Override
     public void stateUpdated(BasicPlayerEvent bpe) {
         if (bpe.getCode() == BasicPlayerEvent.STOPPED) {
             slider.setValue(0);
-            if(bpe.getPosition() == -1 && !control){
+            if (bpe.getPosition() == -1 && !control) {
                 int selectedRow = table.getSelectedRow();
                 if (selectedRow < table.getRowCount() - 1) {
                     table.getSelectionModel().removeListSelectionListener(view.lsl);
                     table.setRowSelectionInterval(selectedRow + 1, selectedRow + 1);
-                    Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(selectedRow+1));
+                    Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(selectedRow + 1), 0);
                     table.getSelectionModel().addListSelectionListener(view.lsl);
                 }
-            }
-            else if(bpe.getPosition() > -1){
+            } else if (bpe.getPosition() > -1) {
                 control = true;
-            }
-            else{
+            } else {
                 control = false;
             }
         } else if (bpe.getCode() == BasicPlayerEvent.OPENED) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.audioplayer.controlador;
 
 import javax.swing.JTable;
@@ -26,11 +21,14 @@ public class ListSelectionListenerPersonalized implements ListSelectionListener 
 
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-        System.out.println(System.currentTimeMillis() + " -- " +lse.getValueIsAdjusting() + " / " + lse.getSource().getClass().getSimpleName());
+        System.out.println(System.currentTimeMillis() + " -- " + lse.getValueIsAdjusting() + " / " + lse.getSource().getClass().getSimpleName());
         if (!lse.getValueIsAdjusting()) {
             Cancion c = TableModelPersonalized.getCancion(table.getSelectedRow());
-            if(c != null)
-                Audio.GetPlayer().openSong(c);
+            if (c != null) {
+                if (Audio.getCurrentCancion() != c) {
+                    Audio.GetPlayer().openSong(c, 0);
+                }
+            }
         }
     }
 }

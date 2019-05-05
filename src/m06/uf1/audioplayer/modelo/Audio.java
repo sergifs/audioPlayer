@@ -1,10 +1,12 @@
 package m06.uf1.audioplayer.modelo;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javazoom.jlgui.basicplayer.BasicPlayer;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
+import m06.uf1.audioplayer.controlador.Controlador;
 
 // http://www.javazoom.net/jlgui/api.html
 public class Audio extends BasicPlayer {
@@ -20,13 +22,26 @@ public class Audio extends BasicPlayer {
 
     private Audio() {
         super();
-        if(player != null)
+        if (player != null) {
             throw new IllegalAccessError("No se puede hacer esto");
+        }
     }
 
-    public boolean openSong(Cancion c) {
+    private static Cancion currentSong;
+
+    public static Cancion getCurrentCancion() {
+        return currentSong;
+    }
+
+    public boolean openSong(Cancion c, int delay) {
         boolean resultado = false;
-        
+        currentSong = c;
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(delay);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             stop();
         } catch (BasicPlayerException ex) {
@@ -45,6 +60,5 @@ public class Audio extends BasicPlayer {
     public void play() throws BasicPlayerException {
         super.play(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
