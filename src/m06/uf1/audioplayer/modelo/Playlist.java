@@ -1,6 +1,7 @@
 package m06.uf1.audioplayer.modelo;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -114,7 +115,7 @@ public class Playlist {
             FileWriter fichero_03 = new FileWriter("chill.json");
             fichero_03.write(playList_03.toString());
             fichero_03.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

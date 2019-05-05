@@ -13,7 +13,8 @@ public class Vista {
     private JFrame finestra;
     private JPanel panell;
 
-    private JButton play, stop, pausa, continuar, anterior, siguiente;
+    private JButton play, stop, pausa, continuar;
+    private final JButton anterior, siguiente;
 
     public Vista(Controlador controller) {
         finestra = new JFrame("Reproductor Àudio");

@@ -107,7 +107,7 @@ public class ListaBibliotecaDOM {
 
         JSONParser parser = new JSONParser();
 
-        for (Map.Entry<Integer, Playlist> entry : ReproductorAudio.getPlaylists().entrySet()) {
+        ReproductorAudio.getPlaylists().entrySet().forEach((entry) -> {
             try {
                 //ID
                 //Playlist playlist = ReproductorAudio.buscarPlaylist(Integer.parseInt(playlistJSON.get("id").toString()));
@@ -136,6 +136,6 @@ public class ListaBibliotecaDOM {
             } catch (IOException ex) {
                 Logger.getLogger(Playlist.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        });
     }
 }

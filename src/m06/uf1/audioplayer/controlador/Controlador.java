@@ -8,7 +8,6 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -32,7 +31,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     private JTable table;
     private JLabel playlist_art;
     private JLabel min_time, max_time;
-    private View view;
+    private final View view;
 
     public Controlador() throws BasicPlayerException {
         Audio.GetPlayer();
@@ -166,11 +165,7 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
                     Audio.GetPlayer().openSong(TableModelPersonalized.getCancion(selectedRow + 1), 0);
                     table.getSelectionModel().addListSelectionListener(view.lsl);
                 }
-            } else if (bpe.getPosition() > -1) {
-                control = true;
-            } else {
-                control = false;
-            }
+            } else control = bpe.getPosition() > -1;
         } else if (bpe.getCode() == BasicPlayerEvent.OPENED) {
             try {
                 Audio.GetPlayer().play();
@@ -188,6 +183,6 @@ public class Controlador implements ActionListener, ItemListener, BasicPlayerLis
     //ChangeListener
     @Override
     public void stateChanged(ChangeEvent ce) {
-        JSlider slider = (JSlider) ce.getSource();
+        slider = (JSlider) ce.getSource();
     }
 }

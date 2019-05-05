@@ -13,7 +13,7 @@ import m06.uf1.audioplayer.modelo.TableModelPersonalized;
  */
 public class ListSelectionListenerPersonalized implements ListSelectionListener {
 
-    private JTable table;
+    private final JTable table;
 
     public ListSelectionListenerPersonalized(JTable table) {
         this.table = table;

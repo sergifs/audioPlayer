@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m06.uf1.audioplayer.vista;
 
-import java.util.Map;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import m06.uf1.audioplayer.controlador.Controlador;
 import m06.uf1.audioplayer.controlador.ListSelectionListenerPersonalized;
 import m06.uf1.audioplayer.controlador.ReproductorAudio;
@@ -282,9 +271,9 @@ public class View extends javax.swing.JFrame {
 
         jComboBox1.removeAllItems();
         jComboBox1.addItem("Ninguna");
-        for (Map.Entry entry : ReproductorAudio.getPlaylists().entrySet()) {
+        ReproductorAudio.getPlaylists().entrySet().forEach((entry) -> {
             jComboBox1.addItem(((Playlist) entry.getValue()).getNombre());
-        }
+        });
 
         jComboBox1.addItemListener(control);
     }
